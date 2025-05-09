@@ -3,10 +3,10 @@ from loguru import logger
 from voxmind.app_interfaces.command_source import CommandSource
 from voxmind.app_utils.settings import Settings
 from voxmind.app_utils.utils import normalize_text
-from voxmind.commands_sources.voice_command_source.stt_module import STTModule
+from voxmind.commands_sources.local_voice_command_source.stt_module import STTModule
 
 
-class VoiceCommandSource(CommandSource):
+class LocalVoiceCommandSource(CommandSource):
     # TODO: разделить класс на распознаватель и источник аудио
     def __init__(self, settings: Settings, *, setup_micro: bool = True):
         self.config = settings
