@@ -13,7 +13,7 @@ class VoiceCommandSource(CommandSource):
 
         self._sst_module = STTModule(settings, setup_micro=setup_micro)
 
-    async def __anext__(self) -> str:
+    async def get_command(self) -> str:
         while True:
             text = await self._sst_module.next_utterance()
 

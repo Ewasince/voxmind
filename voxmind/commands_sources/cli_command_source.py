@@ -6,7 +6,7 @@ class CLICommandSource(CommandSource):
     def __init__(self, settings: Settings):
         self.config = settings
 
-    async def __anext__(self) -> str:
+    async def get_command(self) -> str:
         command_utterance = ""
         while not command_utterance:
             command_utterance = await self._get_text_input()
