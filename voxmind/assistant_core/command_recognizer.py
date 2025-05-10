@@ -25,6 +25,7 @@ class CommandRecognizer:
 
         if not command_topic:
             self._default_command = command_class
+            logger.info(f'Add default command: "{command_class.__class__.__name__}"')
             return
         if is_forbidden_chars(command_topic):
             msg = f"topic cant contain forbidden characters: {command_topic}"
@@ -33,6 +34,7 @@ class CommandRecognizer:
             msg = f"duplicate command topic: {command_topic}"
             raise ValueError(msg)
         self._command_dict[command_topic] = command_class
+        logger.info(f'Add command "{command_topic}":"{command_class.__class__.__name__}"')
 
     async def process_command_from_text(self, command_text: str) -> str | None:
         command_performer = await self._guess_command(command_text)
